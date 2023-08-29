@@ -1,0 +1,94 @@
+<!-- I used the index.html code from the finance project to setup/start this index file!-->
+
+{% extends "layout.html" %}
+
+{% block main%}
+    <div style="position: relative; top: 20px;">
+        <!-- I learned to use italics from here: https://www.w3schools.com/html/html_formatting.asp-->
+    <h1><i>Welcome to Cocktail World!</i></h1>
+    <a class="btn btn-success" style="font-size: 1.2vw; border-radius: 20px;" href="/search">Search a cocktail's recipe of your choice!</a>
+
+    <!-- I learned flexbox from here: https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01 and https://www.youtube.com/watch?v=fYq5PXgSsbE-->
+    <div class="index-flexbox-column">
+        <div class="index-items">
+            <div style="position: relative">
+                <img src="/static/old_fashioned.jpg" class="img-thumbnail">
+                <p class="img-description">Old Fashioned</p>
+            </div>
+            <div>
+                <p class="phrase">An old classic</p>
+                <span class="star">&#9733&#9733&#9733&#9733&#9733</span>
+                <form action="/" method="post">
+                    <input class="recipe btn btn-warning" name="recipe" type="submit" value="Get the Old Fashioned Recipe!">
+                </form>
+            </div>
+        </div>
+        <div class="index-items">
+            <div style="position: relative">
+                <img src="/static/moscow_mule.jpg" class="img-thumbnail">
+                <p class="img-description">Moscow Mule</p>
+            </div>
+            <div>
+                <p class="phrase">From Moscow with love</p>
+                <span class="star">&#9733&#9733&#9733&#9733&#9734</span>
+                <form action="/" method="post">
+                    <input class="recipe btn btn-warning" name="recipe" type="submit" value="Get the Moscow Mule Recipe!">
+                </form>
+            </div>
+        </div>
+        <div class="index-items">
+            <div style="position: relative">
+                <img src="/static/mojito.jpg" class="img-thumbnail">
+                <p class="img-description">Mojito</p>
+            </div>
+            <div>
+                <p class="phrase">Ole reliable</p>
+                <span class="star">&#9733&#9733&#9733&#9733&#9733</span>
+                <form action="/" method="post">
+                    <input class="recipe btn btn-warning" name="recipe" type="submit" value="Get the Mojito Recipe!">
+                </form>
+            </div>
+        </div>
+        <div class="index-items">
+            <div style="position: relative">
+                <img src="/static/whiskey_sour.jpg" class="img-thumbnail">
+                <p class="img-description">Whiskey Sour</p>
+            </div>
+            <div>
+                <p class="phrase">Sour but good</p>
+                <span class="star">&#9733&#9733&#9733&#9733&#9734</span>
+                <form action="/" method="post">
+                    <input class="recipe btn btn-warning" name="recipe" type="submit" value="Get the Whiskey Sour Recipe!">
+                </form>
+            </div>
+        </div>
+        <div class="index-items">
+            <div style="position: relative">
+                <img src="/static/margarita.jpg" class="img-thumbnail">
+                <p class="img-description">Margarita</p>
+            </div>
+            <div>
+                <p class="phrase">Never enough</p>
+                <span class="star">&#9733&#9733&#9733&#9733&#9733</span>
+                <form action="/" method="post">
+                    <input class="recipe btn btn-warning" name="recipe" type="submit" value="Get the Margarita Recipe!">
+                </form>
+            </div>
+        </div>
+        <div class="index-items">
+            <div style="position: relative">
+                <img src="/static/manhattan.jpg" class="img-thumbnail">
+                <p class="img-description">Manhattan</p>
+            </div>
+            <div>
+                <p class="phrase">No words needed</p>
+                <span class="star">&#9733&#9733&#9733&#9733&#9734</span>
+                <form action="/" method="post">
+                    <input class="recipe btn btn-warning" name="recipe" type="submit" value="Get the Manhattan Recipe!">
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

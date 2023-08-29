@@ -1,0 +1,57 @@
+<!-- I used the index.html code from the finance project to setup/start this index file!-->
+
+{% extends "layout.html" %}
+
+{% block main%}
+    <!-- I learned how to use flask categories from: https://www.youtube.com/watch?v=lcVdZtVvnnk-->
+    {% for message in get_flashed_messages(category_filter = ["error"]) %}
+
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+
+    {% endfor %}
+
+    {% for message in get_flashed_messages(category_filter = ["success"]) %}
+
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+
+    {% endfor %}
+
+    <h1 style="position: relative; top: 20px;"><i>My Cocktail List:</i></h1>
+
+    <!-- I learned how to use bootstrap tables from: https://getbootstrap.com/docs/4.0/content/tables/-->
+    <table class="table" style="position: relative; top: 20px">
+        <thead>
+          <tr>
+            <th scope="col" style="font-size: 2vh">Number</th>
+            <th scope="col" style="font-size: 2vh">Name</th>
+            <th scope="col" style="font-size: 2vh">Image</th>
+            <th scope="col" style="font-size: 2vh">See Recipe</th>
+            <th scope="col" style="font-size: 2vh">Remove cocktail</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for number in range(user_list|length) %}
+                <tr>
+                    <th scope="row" style="font-size: 2vh; vertical-align: middle">{{ number + 1}}</th>
+                    <td style="font-size: 2vh; vertical-align: middle">{{ user_list[number]["name"] }}</td>
+                    <td style="font-size: 2vh; vertical-align: middle"><img src={{ user_list[number]["image"] }} class="saved-image"></td>
+                    <td style="font-size: 2vh; vertical-align: middle">
+                        <form action="/saved" method="post">
+                        <input class="recipe btn btn-warning" name="name" type="submit" value='Get the {{ user_list[number]["name"] }} Recipe!'>
+                        </form>
+                    </td>
+                    <td style="font-size: 2vh; vertical-align: middle">
+                        <form action="/saved" method="post">
+                        <input class="recipe btn btn-danger" name="remove" type="submit" value='Remove {{ user_list[number]["name"] }}'>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

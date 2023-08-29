@@ -1,0 +1,29 @@
+<!-- I used the index.html code from the finance project to setup/start this index file!-->
+
+{% extends "layout.html" %}
+
+{% block main%}
+
+    <div style="position: relative; top: 20px;">
+        <h1> The following is the {{ name }} recipe:</h1>
+    <div class="search-flexbox">
+        <div>
+            <img src={{ image }} class="search-image">
+        </div>
+        <div class="information">
+            <p><h2 align="left" style="color: green; font-size: 4vh">Ingredients: </h2></p>
+            {% for ingredient in ingredients%}
+                <p><h3 align="left" style="font-size: 2vh">- {{ ingredient }}</h3></p>
+            {% endfor %}
+            <p><h2 align="left" style="color: green; font-size: 4vh">Instructions: </h2></p>
+            <p><h3 align="left" style="font-size: 2vh">{{ instructions }}</h3></p>
+        </div>
+    </div>
+    {% if session["user_id"] %}
+        <form id="form" class="save-drink" action="/recipe" method="post">
+            <button class="save">Save Drink</button>
+        </form>
+    {% endif %}
+    </div>
+
+{% endblock %}
