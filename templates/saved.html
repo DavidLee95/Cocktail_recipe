@@ -1,9 +1,6 @@
-<!-- I used the index.html code from the finance project to setup/start this index file!-->
-
 {% extends "layout.html" %}
 
 {% block main%}
-    <!-- I learned how to use flask categories from: https://www.youtube.com/watch?v=lcVdZtVvnnk-->
     {% for message in get_flashed_messages(category_filter = ["error"]) %}
 
     <div class="alert alert-danger" role="alert">
@@ -22,7 +19,6 @@
 
     <h1 style="position: relative; top: 20px;"><i>My Cocktail List:</i></h1>
 
-    <!-- I learned how to use bootstrap tables from: https://getbootstrap.com/docs/4.0/content/tables/-->
     <table class="table" style="position: relative; top: 20px">
         <thead>
           <tr>

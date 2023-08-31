@@ -10,28 +10,27 @@ app = Flask(__name__)
 # Ensure template are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
-# Configure sessions system to not use signed cookies!
+# Configure sessions system to not use signed cookies
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-# Configure users db!
+# Configure users db
 db = SQL("sqlite:///users.db")
 
 # Declare global variables:
 name = ""
 image = ""
 
-# This code was taken from the app.py code in the finance project!
 @app.after_request
 def after_request(response):
-    """Ensure responses aren't cahted"""
+    """Ensure responses aren't cached"""
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Expires"] = 0
     response.headers["Pragma"] = "no-cache"
     return response
 
-#The register menu was created and coded based on the finance project's "register.html" page and app.py!
+# Registration menu
 @app.route("/register", methods=["GET", "POST"])
 def register():
 
@@ -74,6 +73,7 @@ def register():
     else:
         return render_template("register.html")
 
+# Search menu
 @app.route("/search", methods=["GET", "POST"])
 @login_required
 def search():
@@ -119,6 +119,7 @@ def search():
 
     return render_template("search.html")
 
+# Saved menu
 @app.route("/saved", methods=["GET", "POST"])
 @login_required
 def saved():
@@ -172,7 +173,7 @@ def saved():
     #Show the main page with my information
     return render_template("saved.html", user_list = user_list)
 
-
+# Random menu
 @app.route("/random")
 @login_required
 def random():
@@ -204,7 +205,7 @@ def random():
     #Send the information to the corresponding page
     return render_template("recipe.html", name=name, image=image, ingredients=ingredients, instructions=instructions)
 
-#The login menu was created and coded based on the finance project's "login.html" page and app.py!
+# Login menu
 @app.route("/login", methods=["GET", "POST"])
 def login():
 
@@ -239,12 +240,10 @@ def login():
         # Get the user id of the logged in user
         session["user_id"] = username[0]["id"]
         return render_template("index.html")
-
-
     else:
         return render_template("login.html")
 
-#The logout function was created and coded based on the finance project's app.py!
+# Logout menu
 @app.route("/logout")
 @login_required
 def logout():
@@ -255,6 +254,7 @@ def logout():
     # Send the user to the main page
     return render_template("index.html")
 
+# Home menu
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -262,7 +262,7 @@ def index():
         global name
         global image
 
-        # I learned the way to obtain values from input at: https://www.codegrepper.com/search.php?answer_removed=1&q=flask%20get%20value%20of%20button
+        # Conditions
         if request.form["recipe"] == "Get the Old Fashioned Recipe!":
             cocktail_name = "old_fashioned"
         elif request.form["recipe"] == "Get the Moscow Mule Recipe!":
@@ -300,9 +300,10 @@ def index():
         return render_template("recipe.html", name=name, image=image, ingredients=ingredients, instructions=instructions)
 
     else:
-        #Show the main page with my information
+        #Show the main page
         return render_template("index.html")
 
+# Recipe menu
 @app.route("/recipe", methods=["GET", "POST"])
 @login_required
 def recipe():
@@ -310,8 +311,8 @@ def recipe():
     # Add a specific drink to the user's saved list
     if request.method == 'POST':
         # Only add the drink if it has not been added yet
-        if len(db.execute("SELECT * FROM list WHERE name = ?", name)) == 0:
-            user_id = session["user_id"]
+        user_id = session["user_id"]
+        if len(db.execute("SELECT * FROM list WHERE name = ? AND id = ?", name, user_id)) == 0:
             db.execute("INSERT INTO list (id, name, image) VALUES (?, ?, ?)", user_id, name, image)
             flash("Cocktail added succesfully!", "success")
         else:

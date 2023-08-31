@@ -1,5 +1,3 @@
- <!-- I used the layout.html code from the finance project to setup/start this layout file!-->
-
  <!DOCTYPE html>
 
  <html lang="en">
@@ -24,10 +22,9 @@
     <body>
         <!-- Bring in a nav bar from Bootstrap! -->
         <header class="header">
-            <!-- I saw how to change navbar color from: https://mdbootstrap.com/how-to/bootstrap/change-navbar-color/-->
             <nav class="navbar navbar-expand-lg navbar-light" style="background-color: PaleTurquoise; height: 100px">
                 <a class="navbar-brand" href="/">
-                  <!-- Add a logo to the navbar from: https://www.w3schools.com/html/html_images.asp-->
+                  <!-- Add a logo to the navbar-->
                   <img class="image-logo" src="static/logo.png"></img>
                 </a>
                 <div class="navbar_elements">
@@ -49,7 +46,6 @@
                       <li class="nav-item">
                         <a class="nav-link" style="color: green" href="/saved">Saved</a>
                       </li>
-                      <!-- I obtained the following logic from the finance project's layout.html page -->
                       {% if session["user_id"] %}
                         <li class="nav-item">
                           <a class="nav-link" style="color: chocolate" href="/logout">Logout</a>

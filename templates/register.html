@@ -1,9 +1,6 @@
-<!-- I used the register.html code from the finance project to setup/start this index file!-->
-
 {% extends "layout.html" %}
 
 {% block main%}
-    <!-- I learned how to use flash() from: https://www.youtube.com/watch?v=abCSKRMGZ3A-->
     {% for message in get_flashed_messages() %}
 
         <div class="alert alert-danger" role="alert">

@@ -24,7 +24,6 @@
     margin-bottom: 5px;
 }
 
-/* I learned flexbox from here: https://dev.to/drews256/ridiculously-easy-row-and-column-layouts-with-flexbox-1k01 and https://www.youtube.com/watch?v=fYq5PXgSsbE */
 .index-flexbox-column {
     position: relative;
     top: 1vh;
@@ -73,7 +72,6 @@
 
 .star {
     background: blue;
-    /* I saw the star shape at: https://www.toptal.com/designers/htmlarrows/symbols/black-star/*/
     content: "\2605";
     font-size: 2vw;
     color: yellow;
@@ -129,7 +127,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    /* I learned the calc method from: https://www.w3schools.com/cssref/func_calc.php*/
     height: calc(100vh - 100px);
 }
 
@@ -188,7 +185,6 @@
     width: 20vw;
 }
 
-/* I learned the rgb method from: https://www.w3schools.com/css/css_colors_rgb.asp*/
 .login {
     color: white;
     background-color: rgb(90,20,255);
